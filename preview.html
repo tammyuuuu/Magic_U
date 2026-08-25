@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="icon" type="image/png" href="icons/icon-192.png">
+  <title>Magic_U · 手机开发预览</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --phone-width: 393px;
+      --phone-height: 852px;
+      --viewport-height: 852px;
+      --safe-top: 47px;
+      --safe-bottom: 34px;
+      --keyboard-height: 0px;
+      font-family: Inter, "Segoe UI", "Microsoft YaHei", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body { min-height: 100%; }
+
+    body {
+      margin: 0;
+      color: #e8e0f5;
+      background:
+        radial-gradient(circle at 50% -10%, rgba(120, 72, 180, .22), transparent 42%),
+        #100c17;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 10px 14px;
+      min-height: 58px;
+      padding: 10px 16px;
+      background: rgba(18, 13, 27, .92);
+      border-bottom: 1px solid rgba(205, 181, 235, .16);
+      backdrop-filter: blur(14px);
+    }
+
+    .brand { margin-right: 6px; font-weight: 700; letter-spacing: .04em; }
+    .control { display: flex; align-items: center; gap: 7px; color: #bdb1cc; font-size: 12px; }
+
+    select, button, .toggle {
+      min-height: 34px;
+      border: 1px solid rgba(202, 175, 235, .28);
+      border-radius: 9px;
+      color: #eee7f7;
+      background: #21182d;
+      font: inherit;
+    }
+
+    select { padding: 0 30px 0 10px; }
+    button { padding: 0 13px; cursor: pointer; }
+    button:hover { border-color: #b995e4; background: #2b1e3b; }
+
+    .toggle { display: inline-flex; align-items: center; gap: 7px; padding: 0 10px; cursor: pointer; }
+    .toggle input { accent-color: #a775df; }
+
+    .workspace {
+      min-height: calc(100vh - 58px);
+      display: grid;
+      place-items: start center;
+      padding: 26px 20px 52px;
+      overflow: auto;
+    }
+
+    .phone-wrap { display: grid; justify-items: center; gap: 10px; }
+
+    .phone {
+      position: relative;
+      width: calc(var(--phone-width) + 18px);
+      height: calc(var(--phone-height) + 18px);
+      padding: 9px;
+      overflow: hidden;
+      border: 1px solid rgba(224, 208, 244, .42);
+      border-radius: 38px;
+      background: #050408;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, .58), 0 0 0 5px rgba(255, 255, 255, .025);
+    }
+
+    .screen {
+      position: relative;
+      width: var(--phone-width);
+      height: var(--phone-height);
+      overflow: hidden;
+      border-radius: 29px;
+      background: #0d001a;
+    }
+
+    iframe {
+      display: block;
+      width: var(--phone-width);
+      height: var(--viewport-height);
+      border: 0;
+      background: #0d001a;
+    }
+
+    .safe-area { position: absolute; left: 0; right: 0; z-index: 8; pointer-events: none; display: none; }
+    .show-safe .safe-area { display: block; }
+    .safe-top {
+      top: 0;
+      height: var(--safe-top);
+      border-bottom: 1px dashed rgba(255, 103, 145, .9);
+      background: rgba(255, 67, 116, .12);
+    }
+    .safe-bottom {
+      top: calc(var(--viewport-height) - var(--safe-bottom));
+      height: var(--safe-bottom);
+      border-top: 1px dashed rgba(76, 194, 255, .9);
+      background: rgba(51, 175, 255, .12);
+    }
+
+    .island {
+      position: absolute;
+      z-index: 9;
+      top: 11px;
+      left: 50%;
+      width: 116px;
+      height: 31px;
+      transform: translateX(-50%);
+      border-radius: 18px;
+      background: rgba(0, 0, 0, .92);
+      pointer-events: none;
+      display: none;
+    }
+    .show-safe .island { display: block; }
+
+    .keyboard {
+      position: absolute;
+      z-index: 10;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: var(--keyboard-height);
+      display: none;
+      place-items: center;
+      color: rgba(255,255,255,.5);
+      font-size: 12px;
+      letter-spacing: .12em;
+      background:
+        repeating-linear-gradient(90deg, transparent 0 8%, rgba(255,255,255,.08) 8.5% 15%, transparent 15.5% 17%),
+        #343238;
+      border-top: 1px solid rgba(255,255,255,.24);
+    }
+    .keyboard-open .keyboard { display: grid; }
+
+    .status { color: #91859f; font-size: 12px; text-align: center; }
+
+    @media (max-width: 680px) {
+      .toolbar { position: relative; justify-content: flex-start; }
+      .brand { width: 100%; }
+      .workspace { padding-inline: 8px; }
+      .phone-wrap {
+        transform-origin: top center;
+        transform: scale(min(1, calc((100vw - 28px) / (var(--phone-width) + 18px))));
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="toolbar">
+    <div class="brand">Magic_U 手机预览</div>
+
+    <label class="control">页面
+      <select id="pageSelect">
+        <option value="reading_ios.html">自由牌桌</option>
+      </select>
+    </label>
+
+    <label class="control">设备
+      <select id="deviceSelect">
+        <option value="393,852,47,34">iPhone 标准 · 393×852</option>
+        <option value="375,667,20,0">iPhone 小屏 · 375×667</option>
+        <option value="430,932,59,34">iPhone 大屏 · 430×932</option>
+      </select>
+    </label>
+
+    <label class="toggle"><input id="safeToggle" type="checkbox" checked>安全区</label>
+    <label class="toggle"><input id="keyboardToggle" type="checkbox">键盘</label>
+    <button id="reloadBtn" type="button">刷新页面</button>
+  </header>
+
+  <main class="workspace">
+    <div class="phone-wrap">
+      <div class="phone show-safe" id="phone">
+        <div class="screen">
+          <iframe id="previewFrame" src="reading_ios.html" title="Magic_U 手机页面预览"></iframe>
+          <div class="safe-area safe-top"></div>
+          <div class="island"></div>
+          <div class="safe-area safe-bottom"></div>
+          <div class="keyboard">键盘占用区域</div>
+        </div>
+      </div>
+      <div class="status" id="status">自由牌桌 · 393 × 852 · Safe Area 47 / 34</div>
+    </div>
+  </main>
+
+  <script>
+    const root = document.documentElement;
+    const phone = document.getElementById('phone');
+    const frame = document.getElementById('previewFrame');
+    const pageSelect = document.getElementById('pageSelect');
+    const deviceSelect = document.getElementById('deviceSelect');
+    const safeToggle = document.getElementById('safeToggle');
+    const keyboardToggle = document.getElementById('keyboardToggle');
+    const reloadBtn = document.getElementById('reloadBtn');
+    const status = document.getElementById('status');
+    const keyboardHeight = 318;
+
+    const pageNames = {
+      'reading_ios.html': '自由牌桌'
+    };
+
+    function syncPreview() {
+      const [width, height, safeTop, safeBottom] = deviceSelect.value.split(',').map(Number);
+      const keyboardOpen = keyboardToggle.checked;
+      const viewportHeight = keyboardOpen ? Math.max(320, height - keyboardHeight) : height;
+
+      root.style.setProperty('--phone-width', `${width}px`);
+      root.style.setProperty('--phone-height', `${height}px`);
+      root.style.setProperty('--viewport-height', `${viewportHeight}px`);
+      root.style.setProperty('--safe-top', `${safeTop}px`);
+      root.style.setProperty('--safe-bottom', `${safeBottom}px`);
+      root.style.setProperty('--keyboard-height', keyboardOpen ? `${height - viewportHeight}px` : '0px');
+
+      phone.classList.toggle('show-safe', safeToggle.checked);
+      phone.classList.toggle('keyboard-open', keyboardOpen);
+      status.textContent = `${pageNames[pageSelect.value]} · ${width} × ${height} · Safe Area ${safeTop} / ${safeBottom}${keyboardOpen ? ` · 可用高度 ${viewportHeight}` : ''}`;
+    }
+
+    pageSelect.addEventListener('change', () => {
+      frame.src = pageSelect.value;
+      syncPreview();
+    });
+    deviceSelect.addEventListener('change', syncPreview);
+    safeToggle.addEventListener('change', syncPreview);
+    keyboardToggle.addEventListener('change', syncPreview);
+    reloadBtn.addEventListener('click', () => frame.contentWindow.location.reload());
+
+    syncPreview();
+  </script>
+</body>
+</html>

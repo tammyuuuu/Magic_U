@@ -1,0 +1,15 @@
+{
+  "name": "Magic_U · 塔罗学习与解牌",
+  "short_name": "Magic_U",
+  "start_url": "./reading_ios.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0d001a",
+  "theme_color": "#0d001a",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}
