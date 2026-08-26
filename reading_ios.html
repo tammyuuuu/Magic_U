@@ -1207,7 +1207,7 @@
 </div>
 
 <script src="html2canvas.min.js"></script>
-<script src="decks.js"></script>
+<script src="decks.js?v=2"></script>
 <script>
 // ============================================================
 //  1. 抽屉开关
@@ -1250,8 +1250,7 @@ function loadDecksFromConfig() {
     const fmt = cfg.format || 'png';
     const startAt = cfg.startAt || 0;   // 自定义牌组可从非 0 编号开始
     const deckId = `config-deck-${idx}`;
-    const backFmt = cfg.back || 'png';
-    const backPath = basePath + '/back.' + backFmt;
+    const backPath = basePath + '/' + (cfg.backFile || ('back.' + (cfg.back || 'png')));
     const cards = [];
     for (let i = 0; i < count; i++) {
       cards.push({

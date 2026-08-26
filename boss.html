@@ -13,7 +13,7 @@ const panels=[...document.querySelectorAll('.boss-panel')],state={questions:[],i
 function show(panel){panels.forEach(item=>item.hidden=item!==panel)}
 function shuffled(items){return [...items].sort(()=>Math.random()-.5)}
 function chooseQuestions(){return TYPES.map(type=>shuffled(QUESTION_BANK.filter(q=>q.type===type))[0])}
-function cardPath(id){return `图片/盒子/维特塔罗/${id}.png`}
+function cardPath(id){return `图片/盒子/维特塔罗/${id}.webp`}
 function setCatState(name){document.getElementById('quizCat').className=`cat-wrap${name?' '+name:''}`}
 function renderProgress(){document.getElementById('bossProgress').innerHTML=Array.from({length:5},(_,i)=>`<span class="${i<state.solved?'solved':''}">${i<state.solved?'✦':'◇'}</span>`).join('')}
 function optionsFor(q){if(q.type==='recognize')return q.cards.map(id=>({value:String(id),label:CARD_NAMES[id],cardId:id}));return q.options.map(([value,label])=>({value,label}))}

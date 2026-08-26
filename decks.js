@@ -24,5 +24,5 @@
  */
 
 const DECKS = [
-  { name: '维特塔罗', path: '图片/盒子/维特塔罗', cardCount: 78, format: 'png' },
+  { name: '维特塔罗', path: '图片/盒子/维特塔罗', cardCount: 78, format: 'webp', backFile: 'back-mobile.webp' },
 ];

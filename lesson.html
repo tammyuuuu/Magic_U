@@ -97,7 +97,7 @@
     </section>
   </main>
 
-  <script src="decks.js"></script>
+  <script src="decks.js?v=2"></script>
   <script src="tarot_data.js"></script>
   <script src="tarot_content.js?v=10"></script>
   <script>
@@ -162,7 +162,7 @@
         count: Number(configured.cardCount) || 78,
         format: configured.format || 'png',
         startAt: Number(configured.startAt) || 0,
-        back: configured.back || 'png',
+        backFile: configured.backFile || `back.${configured.back || 'png'}`,
         noReverse: Boolean(configured.noReverse)
       };
     }
@@ -174,7 +174,7 @@
         fileNumber: deck.startAt + cardOffset,
         isReversed: deck.noReverse ? false : Math.random() < .5,
         frontPath: `${deck.path}/${deck.startAt + cardOffset}.${deck.format}`,
-        backPath: `${deck.path}/back.${deck.back}`
+        backPath: `${deck.path}/${deck.backFile}`
       };
     }
 
