@@ -1,0 +1,189 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#100c17"><link rel="icon" type="image/png" href="icons/icon-192.png"><link rel="stylesheet" href="magic-u.css?v=3"><link rel="stylesheet" href="journey.css?v=5"><link rel="stylesheet" href="app-nav.css?v=1"><title>塔罗之旅 · Magic_U</title></head><body class="journey-body">
+<main class="wheel-shell"><div class="wheel-top"><a class="wheel-back" href="index.html">← 返回主页</a><header class="wheel-header"><p class="eyebrow">The Tarot Journey</p><h1>塔罗之旅</h1><p>沿着牌留下的微光，慢慢向前。</p></header></div>
+<section class="level-viewport" id="levelViewport" tabindex="0" aria-label="塔罗学习关卡，使用上下方向切换">
+  <button class="level-item" type="button" data-index="0" data-card-id="0" data-unlocked="true"><span class="level-index">01</span><span class="level-copy"><small>第一关</small><strong>愚人</strong><em>The Fool</em></span><span class="level-status" id="foolStatus">可开始</span></button>
+  <button class="level-item" type="button" data-index="1" data-card-id="1"><span class="level-index">02</span><span class="level-copy"><small>第二关</small><strong>魔术师</strong><em>The Magician</em></span><span class="level-status" id="magicianStatus">锁定</span></button>
+  <button class="level-item" type="button" data-index="2" data-card-id="2"><span class="level-index">03</span><span class="level-copy"><small>第三关</small><strong>女祭司</strong><em>The High Priestess</em></span><span class="level-status" id="priestessStatus">锁定</span></button>
+  <button class="level-item" type="button" data-index="3" data-card-id="3"><span class="level-index">04</span><span class="level-copy"><small>第四关</small><strong>皇后</strong><em>The Empress</em></span><span class="level-status" id="empressStatus">锁定</span></button>
+  <button class="level-item" type="button" data-index="4" data-card-id="4"><span class="level-index">05</span><span class="level-copy"><small>第五关</small><strong>皇帝</strong><em>The Emperor</em></span><span class="level-status" id="emperorStatus">锁定</span></button>
+  <button class="level-item is-boss" id="bossLevel" type="button" data-index="5"><span class="level-index"><span class="cat-mark" aria-hidden="true"><i></i><i></i></span></span><span class="level-copy"><small>Boss</small><strong>黑猫的考验</strong><em>The Black Cat's Trial</em></span><span class="level-status" id="bossStatus">锁定</span></button>
+  <button class="level-item" type="button" data-index="6" data-card-id="5"><span class="level-index">V</span><span class="level-copy"><small>第六关</small><strong>教皇</strong><em>The Hierophant</em></span><span class="level-status" id="hierophantStatus">锁定</span></button>
+  <button class="level-item" type="button" data-index="7" data-card-id="6"><span class="level-index">VI</span><span class="level-copy"><small>第七关</small><strong>恋人</strong><em>The Lovers</em></span><span class="level-status" id="loversStatus">锁定</span></button>
+  <button class="level-item" type="button" data-index="8" data-card-id="7"><span class="level-index">VII</span><span class="level-copy"><small>第八关</small><strong>战车</strong><em>The Chariot</em></span><span class="level-status" id="chariotStatus">锁定</span></button>
+  <button class="level-item" type="button" data-index="9" data-card-id="8"><span class="level-index">VIII</span><span class="level-copy"><small>第九关</small><strong>力量</strong><em>Strength</em></span><span class="level-status" id="strengthStatus">锁定</span></button>
+  <button class="level-item" type="button" data-index="10" data-card-id="9"><span class="level-index">IX</span><span class="level-copy"><small>第十关</small><strong>隐者</strong><em>The Hermit</em></span><span class="level-status" id="hermitStatus">锁定</span></button>
+  <button class="level-item" type="button" data-index="11" data-card-id="10"><span class="level-index">X</span><span class="level-copy"><small>第十一关</small><strong>命运之轮</strong><em>Wheel of Fortune</em></span><span class="level-status" id="wheelStatus">锁定</span></button>
+  <button class="level-item is-boss" id="bossTwoLevel" type="button" data-index="12"><span class="level-index"><span class="cat-mark" aria-hidden="true"><i></i><i></i></span></span><span class="level-copy"><small>Boss II</small><strong>黑猫的考验</strong><em>The Black Cat's Trial II</em></span><span class="level-status" id="bossTwoStatus">锁定</span></button>
+  <button class="level-item" type="button" data-index="13" data-card-id="11"><span class="level-index">XI</span><span class="level-copy"><small>第十二关</small><strong>正义</strong><em>Justice</em></span><span class="level-status" id="justiceStatus">锁定</span></button>
+  <button class="level-item" type="button" data-index="14" data-card-id="12"><span class="level-index">XII</span><span class="level-copy"><small>第十三关</small><strong>倒吊人</strong><em>The Hanged Man</em></span><span class="level-status" id="hangedStatus">锁定</span></button>
+  <button class="level-item" type="button" data-index="15" data-card-id="13"><span class="level-index">XIII</span><span class="level-copy"><small>第十四关</small><strong>死神</strong><em>Death</em></span><span class="level-status" id="deathStatus">锁定</span></button>
+  <button class="level-item" type="button" data-index="16" data-card-id="14"><span class="level-index">XIV</span><span class="level-copy"><small>第十五关</small><strong>节制</strong><em>Temperance</em></span><span class="level-status" id="temperanceStatus">锁定</span></button>
+  <button class="level-item" type="button" data-index="17" data-card-id="15"><span class="level-index">XV</span><span class="level-copy"><small>第十六关</small><strong>恶魔</strong><em>The Devil</em></span><span class="level-status" id="devilStatus">锁定</span></button>
+  <button class="level-item" type="button" data-index="18" data-card-id="16"><span class="level-index">XVI</span><span class="level-copy"><small>第十七关</small><strong>高塔</strong><em>The Tower</em></span><span class="level-status" id="towerStatus">锁定</span></button>
+  <button class="level-item" type="button" data-index="19" data-card-id="17"><span class="level-index">XVII</span><span class="level-copy"><small>第十八关</small><strong>星星</strong><em>The Star</em></span><span class="level-status" id="starStatus">锁定</span></button>
+  <button class="level-item" type="button" data-index="20" data-card-id="18"><span class="level-index">XVIII</span><span class="level-copy"><small>第十九关</small><strong>月亮</strong><em>The Moon</em></span><span class="level-status" id="moonStatus">锁定</span></button>
+  <button class="level-item" type="button" data-index="21" data-card-id="19"><span class="level-index">XIX</span><span class="level-copy"><small>第二十关</small><strong>太阳</strong><em>The Sun</em></span><span class="level-status" id="sunStatus">锁定</span></button>
+  <button class="level-item" type="button" data-index="22" data-card-id="20"><span class="level-index">XX</span><span class="level-copy"><small>第二十一关</small><strong>审判</strong><em>Judgement</em></span><span class="level-status" id="judgementStatus">锁定</span></button>
+  <button class="level-item" type="button" data-index="23" data-card-id="21"><span class="level-index">XXI</span><span class="level-copy"><small>第二十二关</small><strong>世界</strong><em>The World</em></span><span class="level-status" id="worldStatus">锁定</span></button>
+  <button class="level-item is-boss" id="bossThreeLevel" type="button" data-index="24"><span class="level-index"><span class="cat-mark" aria-hidden="true"><i></i><i></i></span></span><span class="level-copy"><small>Boss III</small><strong>黑猫的考验</strong><em>The Major Arcana Trial</em></span><span class="level-status" id="bossThreeStatus">锁定</span></button>
+  <p class="locked-feedback" id="lockedFeedback" role="status">这一关还没有开放</p>
+</section></main>
+<script>
+const FOOL_RESULT_KEY='magic_u_lesson_see_completed',FOOL_DRAW_KEY='magic_u_lesson_see_draw';
+const MAGICIAN_RESULT_KEY='magic_u_lesson_magician_completed',MAGICIAN_DRAW_KEY='magic_u_lesson_magician_draw';
+const PRIESTESS_RESULT_KEY='magic_u_lesson_high_priestess_completed',PRIESTESS_DRAW_KEY='magic_u_lesson_high_priestess_draw';
+const EMPRESS_RESULT_KEY='magic_u_lesson_empress_completed',EMPRESS_DRAW_KEY='magic_u_lesson_empress_draw';
+const EMPEROR_RESULT_KEY='magic_u_lesson_emperor_completed',EMPEROR_DRAW_KEY='magic_u_lesson_emperor_draw';
+const BOSS_RESULT_KEY='magic_u_boss_black_cat_completed';
+const STAGE_TWO=[
+  {result:'magic_u_lesson_hierophant_completed',draw:'magic_u_lesson_hierophant_draw',status:'hierophantStatus'},
+  {result:'magic_u_lesson_lovers_completed',draw:'magic_u_lesson_lovers_draw',status:'loversStatus'},
+  {result:'magic_u_lesson_chariot_completed',draw:'magic_u_lesson_chariot_draw',status:'chariotStatus'},
+  {result:'magic_u_lesson_strength_completed',draw:'magic_u_lesson_strength_draw',status:'strengthStatus'},
+  {result:'magic_u_lesson_hermit_completed',draw:'magic_u_lesson_hermit_draw',status:'hermitStatus'},
+  {result:'magic_u_lesson_wheel_completed',draw:'magic_u_lesson_wheel_draw',status:'wheelStatus'}
+];
+const BOSS_TWO_RESULT_KEY='magic_u_boss_two_completed';
+const STAGE_THREE_A=[
+  {result:'magic_u_lesson_justice_completed',draw:'magic_u_lesson_justice_draw',status:'justiceStatus'},
+  {result:'magic_u_lesson_hanged_man_completed',draw:'magic_u_lesson_hanged_man_draw',status:'hangedStatus'},
+  {result:'magic_u_lesson_death_completed',draw:'magic_u_lesson_death_draw',status:'deathStatus'},
+  {result:'magic_u_lesson_temperance_completed',draw:'magic_u_lesson_temperance_draw',status:'temperanceStatus'},
+  {result:'magic_u_lesson_devil_completed',draw:'magic_u_lesson_devil_draw',status:'devilStatus'},
+  {result:'magic_u_lesson_tower_completed',draw:'magic_u_lesson_tower_draw',status:'towerStatus'}
+];
+const STAGE_THREE_B=[
+  {result:'magic_u_lesson_star_completed',draw:'magic_u_lesson_star_draw',status:'starStatus'},
+  {result:'magic_u_lesson_moon_completed',draw:'magic_u_lesson_moon_draw',status:'moonStatus'},
+  {result:'magic_u_lesson_sun_completed',draw:'magic_u_lesson_sun_draw',status:'sunStatus'},
+  {result:'magic_u_lesson_judgement_completed',draw:'magic_u_lesson_judgement_draw',status:'judgementStatus'},
+  {result:'magic_u_lesson_world_completed',draw:'magic_u_lesson_world_draw',status:'worldStatus'}
+];
+const BOSS_THREE_RESULT_KEY='magic_u_boss_three_major_completed';
+const completed=Boolean(localStorage.getItem(FOOL_RESULT_KEY));
+const magicianCompleted=Boolean(localStorage.getItem(MAGICIAN_RESULT_KEY));
+const viewport=document.getElementById('levelViewport');
+const levels=[...document.querySelectorAll('.level-item')];
+const feedback=document.getElementById('lockedFeedback');
+let currentIndex=completed?1:0,scrollFrame=null,feedbackTimer=null;
+if(completed){
+  document.getElementById('foolStatus').textContent='已完成 · 可重新体验';
+  levels[1].dataset.unlocked='true';
+  document.getElementById('magicianStatus').textContent=magicianCompleted?'已完成 · 可重新体验':'可开始';
+}
+if(magicianCompleted){
+  levels[2].dataset.unlocked='true';
+  document.getElementById('priestessStatus').textContent=localStorage.getItem(PRIESTESS_RESULT_KEY)?'已完成 · 可重新体验':'可开始';
+  currentIndex=2;
+}
+if(localStorage.getItem(PRIESTESS_RESULT_KEY)){
+  levels[3].dataset.unlocked='true';
+  document.getElementById('empressStatus').textContent=localStorage.getItem(EMPRESS_RESULT_KEY)?'已完成 · 可重新体验':'可开始';
+  currentIndex=3;
+}
+if(localStorage.getItem(EMPRESS_RESULT_KEY)){
+  levels[4].dataset.unlocked='true';
+  document.getElementById('emperorStatus').textContent=localStorage.getItem(EMPEROR_RESULT_KEY)?'已完成 · 可重新体验':'可开始';
+  currentIndex=4;
+}
+if(localStorage.getItem(EMPEROR_RESULT_KEY)){
+  levels[5].dataset.unlocked='true';
+  document.getElementById('bossStatus').textContent=localStorage.getItem(BOSS_RESULT_KEY)?'已完成 · 可重新体验':'可开始';
+  currentIndex=5;
+}
+if(localStorage.getItem(BOSS_RESULT_KEY)){
+  levels[6].dataset.unlocked='true';
+  document.getElementById('hierophantStatus').textContent=localStorage.getItem(STAGE_TWO[0].result)?'已完成 · 可重新体验':'可开始';
+  currentIndex=6;
+}
+STAGE_TWO.forEach((item,index)=>{
+  if(!localStorage.getItem(item.result))return;
+  const nextIndex=7+index;
+  if(nextIndex<levels.length){levels[nextIndex].dataset.unlocked='true';currentIndex=nextIndex}
+  if(index<STAGE_TWO.length-1)document.getElementById(STAGE_TWO[index+1].status).textContent=localStorage.getItem(STAGE_TWO[index+1].result)?'已完成 · 可重新体验':'可开始';
+});
+if(localStorage.getItem(STAGE_TWO[5].result)){
+  document.getElementById('bossTwoStatus').textContent=localStorage.getItem(BOSS_TWO_RESULT_KEY)?'已完成 · 可重新体验':'可开始';
+  currentIndex=12;
+}
+if(localStorage.getItem(BOSS_TWO_RESULT_KEY)){
+  levels[13].dataset.unlocked='true';
+  document.getElementById('justiceStatus').textContent=localStorage.getItem(STAGE_THREE_A[0].result)?'已完成 · 可重新体验':'可开始';
+  currentIndex=13;
+}
+STAGE_THREE_A.forEach((item,index)=>{
+  if(!localStorage.getItem(item.result))return;
+  const nextIndex=14+index;
+  if(nextIndex<levels.length){levels[nextIndex].dataset.unlocked='true';currentIndex=nextIndex}
+  if(index<STAGE_THREE_A.length-1)document.getElementById(STAGE_THREE_A[index+1].status).textContent=localStorage.getItem(STAGE_THREE_A[index+1].result)?'已完成 · 可重新体验':'可开始';
+});
+if(localStorage.getItem(STAGE_THREE_A[5].result)){
+  levels[19].dataset.unlocked='true';
+  document.getElementById('starStatus').textContent=localStorage.getItem(STAGE_THREE_B[0].result)?'已完成 · 可重新体验':'可开始';
+  currentIndex=19;
+}
+STAGE_THREE_B.forEach((item,index)=>{
+  if(!localStorage.getItem(item.result))return;
+  const nextIndex=20+index;
+  if(nextIndex<levels.length){levels[nextIndex].dataset.unlocked='true';currentIndex=nextIndex}
+  if(index<STAGE_THREE_B.length-1)document.getElementById(STAGE_THREE_B[index+1].status).textContent=localStorage.getItem(STAGE_THREE_B[index+1].result)?'已完成 · 可重新体验':'可开始';
+});
+if(localStorage.getItem(STAGE_THREE_B[4].result)){
+  document.getElementById('bossThreeStatus').textContent=localStorage.getItem(BOSS_THREE_RESULT_KEY)?'已完成 · 可重新体验':'可开始';
+  currentIndex=24;
+}
+
+function updateFocus(){
+  const center=viewport.getBoundingClientRect().top+viewport.clientHeight/2;
+  let closestIndex=0,closestDistance=Infinity;
+  levels.forEach((level,index)=>{
+    const rect=level.getBoundingClientRect();
+    const distance=Math.abs(rect.top+rect.height/2-center);
+    if(distance<closestDistance){closestDistance=distance;closestIndex=index}
+  });
+  currentIndex=closestIndex;
+  levels.forEach((level,index)=>{
+    const offset=Math.abs(index-currentIndex);
+    level.classList.toggle('is-focus',offset===0);
+    level.classList.toggle('is-near',offset===1);
+    level.setAttribute('aria-current',offset===0?'step':'false');
+  });
+}
+function centerLevel(index,behavior='smooth'){
+  levels[index].scrollIntoView({block:'center',behavior});
+}
+function sizePicker(){
+  const itemHeight=Math.round(viewport.clientHeight/3);
+  const basePad=Math.round((viewport.clientHeight-itemHeight)/2);
+  viewport.style.setProperty('--picker-item-height',`${itemHeight}px`);
+  viewport.style.setProperty('--picker-pad-top',`${basePad}px`);
+  viewport.style.setProperty('--picker-pad-bottom',`${basePad}px`);
+}
+function showLocked(){
+  feedback.classList.add('show');clearTimeout(feedbackTimer);
+  feedbackTimer=setTimeout(()=>feedback.classList.remove('show'),1100);
+}
+viewport.addEventListener('scroll',()=>{
+  if(scrollFrame)cancelAnimationFrame(scrollFrame);
+  scrollFrame=requestAnimationFrame(updateFocus);
+},{passive:true});
+viewport.addEventListener('keydown',event=>{
+  if(event.key==='ArrowDown'){event.preventDefault();centerLevel(Math.min(levels.length-1,currentIndex+1))}
+  if(event.key==='ArrowUp'){event.preventDefault();centerLevel(Math.max(0,currentIndex-1))}
+  if(event.key==='Enter'||event.key===' '){event.preventDefault();levels[currentIndex].click()}
+});
+levels.forEach((level,index)=>level.addEventListener('click',()=>{
+  if(index!==currentIndex){centerLevel(index);return}
+  if(level.dataset.unlocked==='true'){
+    if(level.id==='bossLevel'){window.location.href='boss.html';return}
+    if(level.id==='bossTwoLevel'){window.location.href='boss.html?stage=2';return}
+    if(level.id==='bossThreeLevel'){window.location.href='boss.html?stage=3';return}
+    const cardId=Number(level.dataset.cardId);
+    const drawKeys={0:FOOL_DRAW_KEY,1:MAGICIAN_DRAW_KEY,2:PRIESTESS_DRAW_KEY,3:EMPRESS_DRAW_KEY,4:EMPEROR_DRAW_KEY,5:STAGE_TWO[0].draw,6:STAGE_TWO[1].draw,7:STAGE_TWO[2].draw,8:STAGE_TWO[3].draw,9:STAGE_TWO[4].draw,10:STAGE_TWO[5].draw,11:STAGE_THREE_A[0].draw,12:STAGE_THREE_A[1].draw,13:STAGE_THREE_A[2].draw,14:STAGE_THREE_A[3].draw,15:STAGE_THREE_A[4].draw,16:STAGE_THREE_A[5].draw,17:STAGE_THREE_B[0].draw,18:STAGE_THREE_B[1].draw,19:STAGE_THREE_B[2].draw,20:STAGE_THREE_B[3].draw,21:STAGE_THREE_B[4].draw};
+    sessionStorage.removeItem(drawKeys[cardId]);
+    window.location.href=cardId===0?'lesson.html':`lesson.html?card=${cardId}`;
+  }else showLocked();
+}));
+window.addEventListener('resize',()=>{sizePicker();centerLevel(currentIndex,'auto');updateFocus()});
+requestAnimationFrame(()=>{sizePicker();centerLevel(currentIndex,'auto');requestAnimationFrame(updateFocus)});
+</script><script src="app-nav.js?v=2"></script></body></html>

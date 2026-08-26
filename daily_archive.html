@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#100c17">
+  <link rel="icon" type="image/png" href="icons/icon-192.png">
+  <link rel="stylesheet" href="magic-u.css?v=3">
+  <link rel="stylesheet" href="daily-card.css?v=9">
+  <link rel="stylesheet" href="handbook.css?v=4">
+  <link rel="stylesheet" href="app-nav.css?v=1">
+  <title>日运档案 · Magic_U</title>
+</head>
+<body class="daily-body archive-body archive-detail-body">
+  <main class="daily-shell archive-detail-shell">
+    <header class="daily-top"><a id="archiveBack" href="handbook_daily.html">‹ 日运档案</a><span>日运档案</span></header>
+    <section id="archiveMissing" class="archive-missing" hidden><h1>没有找到这篇日运档案</h1><a href="handbook.html">返回我的手册</a></section>
+    <article class="archive-daily-result" id="archiveDetail" hidden>
+      <div class="result-heading"><p class="daily-eyebrow">当天的牌</p><div><span id="archiveMood"></span><span>已保存</span></div></div>
+      <div class="daily-result-main"><div class="daily-card result-card" id="archiveCard"><img id="archiveCardImage" alt="当天抽到的塔罗牌"></div><div class="result-copy"><div class="identity-line"><h1><span id="archiveCardName"></span><small id="archiveCardNameEn"></small></h1><span class="orientation" id="archiveOrientation"></span></div><p class="daily-core" id="archiveCore"></p><div class="daily-message"><small>今日提示</small><p id="archiveDaily"></p></div></div></div>
+      <div class="focus-area"><div class="focus-tabs" id="archiveFocusTabs"></div><p class="focus-copy" id="archiveFocusText"></p></div>
+      <section class="archive-notes"><div class="notes-heading"><h2>今天，有什么想记录的事吗？</h2><button id="addNote" type="button">＋ 补记</button></div><div id="notesList"></div><div class="note-composer" id="noteComposer" hidden><textarea id="archiveNoteInput" maxlength="240" placeholder="后来发生了什么？"></textarea><button id="saveArchiveNote" type="button">保存补记</button></div></section>
+    </article>
+  </main>
+  <script src="decks.js"></script>
+  <script src="tarot_data.js"></script>
+  <script src="tarot_daily_content.js?v=1"></script>
+  <script src="tarot_minor_daily_content.js?v=1"></script>
+  <script src="handbook-daily.js?v=4"></script>
+  <script src="app-nav.js?v=2"></script>
+</body>
+</html>

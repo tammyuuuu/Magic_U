@@ -172,6 +172,8 @@
 
     <label class="control">页面
       <select id="pageSelect">
+        <option value="index.html">Magic_U 首页</option>
+        <option value="lesson.html">第一关</option>
         <option value="reading_ios.html">自由牌桌</option>
       </select>
     </label>
@@ -193,14 +195,14 @@
     <div class="phone-wrap">
       <div class="phone show-safe" id="phone">
         <div class="screen">
-          <iframe id="previewFrame" src="reading_ios.html" title="Magic_U 手机页面预览"></iframe>
+          <iframe id="previewFrame" src="index.html" title="Magic_U 手机页面预览"></iframe>
           <div class="safe-area safe-top"></div>
           <div class="island"></div>
           <div class="safe-area safe-bottom"></div>
           <div class="keyboard">键盘占用区域</div>
         </div>
       </div>
-      <div class="status" id="status">自由牌桌 · 393 × 852 · Safe Area 47 / 34</div>
+      <div class="status" id="status">Magic_U 首页 · 393 × 852 · Safe Area 47 / 34</div>
     </div>
   </main>
 
@@ -217,6 +219,8 @@
     const keyboardHeight = 318;
 
     const pageNames = {
+      'index.html': 'Magic_U 首页',
+      'lesson.html': '第一关',
       'reading_ios.html': '自由牌桌'
     };
 

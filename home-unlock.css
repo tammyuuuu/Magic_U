@@ -1,0 +1,5 @@
+.tool-tile.available{border-color:rgba(199,174,212,.3);background:linear-gradient(140deg,rgba(199,174,212,.09),rgba(223,210,230,.025));box-shadow:0 0 24px rgba(168,125,189,.06)}
+.tool-tile.available>small,.tool-tile.available .tool-symbol{color:#b59bc1}
+.tool-tile.available h3{color:#d7cddd}
+.tool-tile.available{cursor:pointer}
+.tool-tile.available:focus-visible{outline:1px solid rgba(220,198,230,.55);outline-offset:3px}

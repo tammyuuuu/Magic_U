@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#100c17">
+  <link rel="icon" type="image/png" href="icons/icon-192.png">
+  <link rel="stylesheet" href="magic-u.css?v=2">
+  <link rel="stylesheet" href="traditional.css?v=17">
+  <title>第一关 · 愚人 | Magic_U</title>
+</head>
+<body>
+  <main class="lesson-shell">
+    <header class="lesson-top">
+      <a class="back-link" href="journey.html">‹ 塔罗之旅</a>
+      <span class="step-label" id="stepLabel">第一关 · 看见</span>
+    </header>
+
+    <section class="panel lesson-intro" id="introPanel">
+      <div class="sigil" aria-hidden="true">✦</div>
+      <h1 id="lessonTitle">第一关 · 愚人</h1>
+      <p class="teaching">在知道一张牌“是什么意思”以前，<br>先看看你自己看见了什么。</p>
+      <button class="primary-button" id="drawButton" type="button">翻开这段旅程</button>
+    </section>
+
+    <section class="panel experience" id="cardPanel" hidden>
+      <div class="card-stage">
+        <button class="tarot-card" id="tarotCard" type="button" aria-label="点击翻开这张牌">
+          <span class="card-flipper">
+            <span class="card-face card-back"><img id="backImage" alt="塔罗牌背" draggable="false"></span>
+            <span class="card-face card-front" id="cardFront"><img id="frontImage" alt="翻开的塔罗牌" draggable="false"></span>
+          </span>
+        </button>
+      </div>
+      <p class="tap-note" id="tapNote">轻触牌面，亲自翻开它</p>
+
+      <section class="prompt-panel" id="observePanel" hidden>
+        <p class="soft-line">先不用急着知道它是什么意思。</p>
+        <h2 id="observationPrompt"></h2>
+        <p class="choice-hint" id="observationHint"></p>
+        <div class="bubbles" id="observeChoices"></div>
+        <button class="reveal-more" id="moreObservations" type="button">再看看其他细节</button>
+        <textarea class="write-box" id="observeWrite" maxlength="160" placeholder="写下你注意到的细节……" hidden></textarea>
+        <div class="continue-row"><button class="primary-button" id="toFollowUp" type="button" disabled>继续看看这个细节</button></div>
+      </section>
+
+      <section class="prompt-panel" id="followUpPanel" hidden>
+        <p class="soft-line">同一个细节，也可以有不同的理解。</p>
+        <h2 id="followUpQuestion"></h2>
+        <div class="bubbles" id="followUpChoices"></div>
+        <textarea class="write-box" id="followUpWrite" maxlength="180" placeholder="写下你自己的想法……" hidden></textarea>
+        <div class="continue-row"><button class="primary-button" id="finishFollowUp" type="button" disabled>进入感受</button></div>
+      </section>
+
+      <section class="prompt-panel" id="feelingPanel" hidden>
+        <p class="phase-contrast"><span>刚才</span> 我看见了什么　·　<strong>现在</strong> 它让我感觉到什么</p>
+        <h2 id="feelingPrompt"></h2>
+        <div class="bubbles" id="feelingChoices"></div>
+        <textarea class="write-box" id="feelingWrite" maxlength="160" placeholder="写下这张牌带给你的感觉……" hidden></textarea>
+        <div class="continue-row"><button class="primary-button" id="toReview" type="button" disabled>回看我的观察</button></div>
+      </section>
+    </section>
+
+    <section class="panel self-review" id="reviewPanel" hidden>
+      <p class="eyebrow">你的观察</p>
+      <h1 id="reviewTitle"></h1>
+      <div class="selection-review">
+        <p><span>你注意到了</span><strong id="reviewObservations"></strong></p>
+        <p><span>你想到</span><strong id="reviewThought"></strong></p>
+        <p><span>你的感觉</span><strong id="reviewFeelings"></strong></p>
+      </div>
+      <p class="review-note" id="reviewNote"></p>
+      <button class="primary-button" id="revealTraditional" type="button">现在，再看看传统是怎样理解它的</button>
+    </section>
+
+    <section class="panel traditional paged-traditional" id="traditionalPanel" hidden>
+      <section class="traditional-page single-reference-page" data-reference-page="core">
+        <div class="traditional-card single-reference-card">
+          <div class="reference-identity"><span class="placeholder-tag">传统参考</span><h1 class="identity-title"><span id="traditionalNumberName"></span><small id="traditionalNameEn"></small></h1><span class="orientation" id="orientationText"></span></div>
+          <p class="single-core" id="traditionalCore"></p><span id="traditionalCoreDetail" hidden></span><div id="traditionalKeywords" hidden></div>
+          <div class="noticed-inline"><span>你刚才注意到</span><strong id="noticedReferenceLabel"></strong><div id="noticedReferenceDetail"></div><small id="noticedThought"></small></div>
+          <div class="inline-explorer"><span>再看看</span><div class="reference-tabs" id="referenceTabs"></div><div class="reference-detail" id="referenceDetail" hidden></div></div>
+          <div class="inline-reversed"><div class="reversal-heading"><h2>如果倒过来</h2><span>逆位</span></div><p class="reversed-note" id="reversedNote"></p><div class="reversal-cards" id="reversalCards"></div><p id="traditionalFraming" hidden></p></div>
+        </div>
+        <div class="page-action"><button class="primary-button reference-next" type="button" data-next-page="interpret">继续，形成我的理解</button></div>
+      </section>
+      <section class="traditional-page interpretation-page" data-reference-page="interpret" hidden>
+        <div class="meaning-step"><h2 class="interpretation-prompt" id="interpretationPrompt"></h2><p class="choice-hint" id="interpretationHint"></p><div class="interpretation-options" id="interpretationChoices"></div><button class="optional-write-toggle" id="showOwnMeaning" type="button">＋ 写下我自己的理解</button><textarea class="write-box" id="ownMeaning" maxlength="280" hidden></textarea><div class="continue-row"><button class="primary-button" id="completeExperience" type="button" disabled>完成这次理解</button></div></div>
+      </section>
+    </section>
+
+    <section class="panel completion" id="completionPanel" hidden>
+      <div class="sigil" aria-hidden="true">✦</div>
+      <h1 id="completionTitle"></h1>
+      <p id="completionText"></p>
+      <a class="primary-button" id="completionLink" href="journey.html">完成第一关</a>
+    </section>
+  </main>
+
+  <script src="decks.js"></script>
+  <script src="tarot_data.js"></script>
+  <script src="tarot_content.js?v=10"></script>
+  <script>
+    const LEVELS = {
+      0: { label: '第一关', name: '愚人', drawKey: 'magic_u_lesson_see_draw', resultKey: 'magic_u_lesson_see_completed' },
+      1: { label: '第二关', name: '魔术师', drawKey: 'magic_u_lesson_magician_draw', resultKey: 'magic_u_lesson_magician_completed' },
+      2: { label: '第三关', name: '女祭司', drawKey: 'magic_u_lesson_high_priestess_draw', resultKey: 'magic_u_lesson_high_priestess_completed' },
+      3: { label: '第四关', name: '皇后', drawKey: 'magic_u_lesson_empress_draw', resultKey: 'magic_u_lesson_empress_completed' },
+      4: { label: '第五关', name: '皇帝', drawKey: 'magic_u_lesson_emperor_draw', resultKey: 'magic_u_lesson_emperor_completed' },
+      5: { label: '第六关', name: '教皇', drawKey: 'magic_u_lesson_hierophant_draw', resultKey: 'magic_u_lesson_hierophant_completed' },
+      6: { label: '第七关', name: '恋人', drawKey: 'magic_u_lesson_lovers_draw', resultKey: 'magic_u_lesson_lovers_completed' },
+      7: { label: '第八关', name: '战车', drawKey: 'magic_u_lesson_chariot_draw', resultKey: 'magic_u_lesson_chariot_completed' },
+      8: { label: '第九关', name: '力量', drawKey: 'magic_u_lesson_strength_draw', resultKey: 'magic_u_lesson_strength_completed' },
+      9: { label: '第十关', name: '隐者', drawKey: 'magic_u_lesson_hermit_draw', resultKey: 'magic_u_lesson_hermit_completed' },
+      10: { label: '第十一关', name: '命运之轮', drawKey: 'magic_u_lesson_wheel_draw', resultKey: 'magic_u_lesson_wheel_completed' },
+      11: { label: '第十二关', name: '正义', drawKey: 'magic_u_lesson_justice_draw', resultKey: 'magic_u_lesson_justice_completed' },
+      12: { label: '第十三关', name: '倒吊人', drawKey: 'magic_u_lesson_hanged_man_draw', resultKey: 'magic_u_lesson_hanged_man_completed' },
+      13: { label: '第十四关', name: '死神', drawKey: 'magic_u_lesson_death_draw', resultKey: 'magic_u_lesson_death_completed' },
+      14: { label: '第十五关', name: '节制', drawKey: 'magic_u_lesson_temperance_draw', resultKey: 'magic_u_lesson_temperance_completed' },
+      15: { label: '第十六关', name: '恶魔', drawKey: 'magic_u_lesson_devil_draw', resultKey: 'magic_u_lesson_devil_completed' },
+      16: { label: '第十七关', name: '高塔', drawKey: 'magic_u_lesson_tower_draw', resultKey: 'magic_u_lesson_tower_completed' },
+      17: { label: '第十八关', name: '星星', drawKey: 'magic_u_lesson_star_draw', resultKey: 'magic_u_lesson_star_completed' },
+      18: { label: '第十九关', name: '月亮', drawKey: 'magic_u_lesson_moon_draw', resultKey: 'magic_u_lesson_moon_completed' },
+      19: { label: '第二十关', name: '太阳', drawKey: 'magic_u_lesson_sun_draw', resultKey: 'magic_u_lesson_sun_completed' },
+      20: { label: '第二十一关', name: '审判', drawKey: 'magic_u_lesson_judgement_draw', resultKey: 'magic_u_lesson_judgement_completed' },
+      21: { label: '第二十二关', name: '世界', drawKey: 'magic_u_lesson_world_draw', resultKey: 'magic_u_lesson_world_completed' }
+    };
+    const requestedCardId = Number(new URLSearchParams(location.search).get('card') || 0);
+    const CARD_ID = Object.hasOwn(LEVELS, requestedCardId) ? requestedCardId : 0;
+    const level = LEVELS[CARD_ID];
+    const DRAW_KEY = level.drawKey;
+    const RESULT_KEY = level.resultKey;
+    const panels = [...document.querySelectorAll('.panel')];
+    const content = TAROT_CONTENT[CARD_ID];
+    const identity = TAROT_CARDS.find(card => card.id === CARD_ID);
+    const stepLabel = document.getElementById('stepLabel');
+    const state = {
+      cardId: CARD_ID,
+      orientation: null,
+      observations: [],
+      observationText: '',
+      followUp: null,
+      feelings: [],
+      feelingText: '',
+      interpretations: [],
+      finalInterpretation: ''
+    };
+    let draw = null;
+    let hasFlipped = false;
+
+    function showPanel(panel) {
+      panels.forEach(item => item.hidden = item !== panel);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function getDeck() {
+      if (!Array.isArray(DECKS) || !DECKS.length) throw new Error('decks.js 中没有可用牌组');
+      const configured = DECKS.find(deck => deck.name === '维特塔罗') || DECKS[0];
+      return {
+        name: configured.name,
+        path: configured.path.replace(/\/+$/, ''),
+        count: Number(configured.cardCount) || 78,
+        format: configured.format || 'png',
+        startAt: Number(configured.startAt) || 0,
+        back: configured.back || 'png',
+        noReverse: Boolean(configured.noReverse)
+      };
+    }
+
+    function createDraw(cardOffset, deck = getDeck()) {
+      return {
+        deckName: deck.name,
+        cardOffset,
+        fileNumber: deck.startAt + cardOffset,
+        isReversed: deck.noReverse ? false : Math.random() < .5,
+        frontPath: `${deck.path}/${deck.startAt + cardOffset}.${deck.format}`,
+        backPath: `${deck.path}/back.${deck.back}`
+      };
+    }
+
+    // Preserved for future formal features such as a daily random card.
+    function createRandomDraw() {
+      const deck = getDeck();
+      return createDraw(Math.floor(Math.random() * deck.count), deck);
+    }
+
+    function createLevelDraw() {
+      return { ...createDraw(CARD_ID), isReversed: false };
+    }
+
+    function renderObservationOptions(expanded = false) {
+      const visible = expanded ? content.observationOptions : content.observationOptions.slice(0, 8);
+      document.getElementById('observeChoices').innerHTML = visible.map(item => `
+        <button class="choice-bubble${state.observations.includes(item.id) ? ' selected' : ''}" type="button" data-id="${item.id}">${item.label}</button>
+      `).join('');
+      document.getElementById('moreObservations').hidden = expanded || content.observationOptions.length <= 8;
+    }
+
+    function enterDraw() {
+      const saved = sessionStorage.getItem(DRAW_KEY);
+      if (saved) {
+        try { draw = JSON.parse(saved); } catch (_) { draw = null; }
+      }
+      if (!draw || draw.cardOffset !== CARD_ID) {
+        draw = createLevelDraw();
+      }
+      draw.isReversed = false;
+      sessionStorage.setItem(DRAW_KEY, JSON.stringify(draw));
+      state.orientation = draw.isReversed ? 'reversed' : 'upright';
+
+      const card = document.getElementById('tarotCard');
+      const backImage = document.getElementById('backImage');
+      const frontImage = document.getElementById('frontImage');
+      backImage.src = draw.backPath;
+      frontImage.src = draw.frontPath;
+      const syncRatio = () => {
+        if (frontImage.naturalWidth && frontImage.naturalHeight) {
+          card.style.aspectRatio = `${frontImage.naturalWidth} / ${frontImage.naturalHeight}`;
+        }
+      };
+      frontImage.addEventListener('load', syncRatio, { once: true });
+      if (frontImage.complete) syncRatio();
+      document.getElementById('cardFront').classList.toggle('reversed', draw.isReversed);
+      card.dataset.cardIndex = String(draw.cardOffset);
+      card.dataset.orientation = state.orientation;
+      stepLabel.textContent = `${level.label} · 翻牌`;
+      showPanel(document.getElementById('cardPanel'));
+    }
+
+    function beginObservation() {
+      document.getElementById('tapNote').hidden = true;
+      document.getElementById('observationPrompt').textContent = content.observationPrompt;
+      document.getElementById('observationHint').textContent = content.observationHint;
+      renderObservationOptions(false);
+      document.getElementById('observePanel').hidden = false;
+      stepLabel.textContent = `${level.label} · 看见`;
+    }
+
+    document.getElementById('drawButton').addEventListener('click', enterDraw);
+    document.getElementById('tarotCard').addEventListener('click', () => {
+      if (hasFlipped) return;
+      hasFlipped = true;
+      document.getElementById('tarotCard').classList.add('flipped');
+      document.getElementById('tapNote').style.opacity = '0';
+      window.setTimeout(beginObservation, 720);
+    });
+
+    document.getElementById('moreObservations').addEventListener('click', () => renderObservationOptions(true));
+    document.getElementById('observeChoices').addEventListener('click', event => {
+      const choice = event.target.closest('.choice-bubble');
+      if (!choice) return;
+      const id = choice.dataset.id;
+      const isSelected = state.observations.includes(id);
+      if (!isSelected && state.observations.length >= 3) return;
+      state.observations = isSelected
+        ? state.observations.filter(item => item !== id)
+        : [...state.observations, id];
+      choice.classList.toggle('selected', !isSelected);
+      choice.setAttribute('aria-pressed', String(!isSelected));
+      const selectedOther = state.observations.includes('other');
+      document.getElementById('observeWrite').hidden = !selectedOther;
+      document.getElementById('toFollowUp').disabled = state.observations.length === 0;
+    });
+    document.getElementById('observeWrite').addEventListener('input', event => {
+      state.observationText = event.target.value.trim();
+    });
+
+    document.getElementById('toFollowUp').addEventListener('click', () => {
+      const observationId = state.observations[0];
+      const followUp = content.followUps[observationId];
+      state.followUp = { observationId, question: followUp.question, answer: '', customText: '' };
+      document.getElementById('observePanel').hidden = true;
+      document.getElementById('followUpQuestion').textContent = followUp.question;
+      document.getElementById('followUpChoices').innerHTML = [
+        ...followUp.options.map(option => `<button class="choice-bubble" type="button">${option}</button>`),
+        `<button class="choice-bubble" type="button" data-write="true">${followUp.customLabel || '我有自己的想法'}</button>`
+      ].join('');
+      document.getElementById('followUpWrite').hidden = true;
+      document.getElementById('finishFollowUp').disabled = true;
+      document.getElementById('followUpPanel').hidden = false;
+      stepLabel.textContent = `${level.label} · 思考`;
+    });
+
+    document.getElementById('followUpChoices').addEventListener('click', event => {
+      const choice = event.target.closest('.choice-bubble');
+      if (!choice) return;
+      document.querySelectorAll('#followUpChoices .choice-bubble').forEach(item => {
+        item.classList.toggle('selected', item === choice);
+      });
+      const isCustom = choice.dataset.write === 'true';
+      state.followUp.answer = isCustom ? '' : choice.textContent.trim();
+      state.followUp.customText = '';
+      document.getElementById('followUpWrite').hidden = !isCustom;
+      document.getElementById('finishFollowUp').disabled = isCustom;
+      if (isCustom) document.getElementById('followUpWrite').focus({ preventScroll: true });
+    });
+    document.getElementById('followUpWrite').addEventListener('input', event => {
+      state.followUp.customText = event.target.value.trim();
+      document.getElementById('finishFollowUp').disabled = !state.followUp.customText;
+    });
+
+    function showFeelingStage() {
+      document.getElementById('followUpPanel').hidden = true;
+      document.getElementById('feelingPrompt').textContent = content.feelingPrompt;
+      document.getElementById('feelingChoices').innerHTML = [
+        ...content.feelingOptions.map(option => `<button class="choice-bubble" type="button" data-value="${option}">${option}</button>`),
+        '<button class="choice-bubble" type="button" data-write="true">我有自己的感觉</button>'
+      ].join('');
+      document.getElementById('feelingPanel').hidden = false;
+      stepLabel.textContent = `${level.label} · 感受`;
+    }
+    document.getElementById('finishFollowUp').addEventListener('click', showFeelingStage);
+
+    document.getElementById('feelingChoices').addEventListener('click', event => {
+      const choice = event.target.closest('.choice-bubble');
+      if (!choice) return;
+      const isCustom = choice.dataset.write === 'true';
+      if (isCustom) {
+        const selected = choice.classList.toggle('selected');
+        document.getElementById('feelingWrite').hidden = !selected;
+        if (!selected) state.feelingText = '';
+        if (selected) document.getElementById('feelingWrite').focus({ preventScroll: true });
+      } else {
+        const value = choice.dataset.value;
+        const selected = state.feelings.includes(value);
+        state.feelings = selected ? state.feelings.filter(item => item !== value) : [...state.feelings, value];
+        choice.classList.toggle('selected', !selected);
+      }
+      const hasCustom = !document.getElementById('feelingWrite').hidden && state.feelingText;
+      document.getElementById('toReview').disabled = state.feelings.length === 0 && !hasCustom;
+    });
+    document.getElementById('feelingWrite').addEventListener('input', event => {
+      state.feelingText = event.target.value.trim();
+      document.getElementById('toReview').disabled = state.feelings.length === 0 && !state.feelingText;
+    });
+
+    function observationLabels() {
+      const labels = state.observations.map(id => content.observationOptions.find(item => item.id === id)?.label).filter(Boolean);
+      if (state.observationText) labels.push(`“${state.observationText}”`);
+      return labels;
+    }
+    function feelingLabels() {
+      return [...state.feelings, ...(state.feelingText ? [`“${state.feelingText}”`] : [])];
+    }
+    function thoughtText() {
+      return state.followUp?.customText || state.followUp?.answer || '我还在想';
+    }
+
+    document.getElementById('toReview').addEventListener('click', () => {
+      document.getElementById('reviewTitle').textContent = content.review.title;
+      document.getElementById('reviewObservations').textContent = observationLabels().join(' · ');
+      document.getElementById('reviewThought').textContent = `“${thoughtText()}”`;
+      document.getElementById('reviewFeelings').textContent = feelingLabels().join(' · ');
+      document.getElementById('reviewNote').textContent = content.review.note;
+      stepLabel.textContent = `${level.label} · 回顾`;
+      showPanel(document.getElementById('reviewPanel'));
+    });
+
+    function renderTraditionalReference() {
+      const reference = content.traditionalReference;
+      document.getElementById('traditionalNumberName').textContent = `${identity.rank} · ${identity.nameZh}`;
+      document.getElementById('traditionalNameEn').textContent = identity.nameEn;
+      document.getElementById('orientationText').textContent = draw.isReversed ? content.reversed.label : content.upright.label;
+      document.getElementById('traditionalCore').textContent = reference.core;
+      document.getElementById('traditionalCoreDetail').textContent = reference.coreDetail;
+      document.getElementById('traditionalCoreDetail').hidden = false;
+      document.getElementById('traditionalKeywords').innerHTML = reference.keywords.map(word => `<span>${word}</span>`).join('');
+      document.getElementById('traditionalKeywords').hidden = false;
+
+      const primaryObservation = content.observationOptions.find(item => item.id === state.observations[0]);
+      const matchingReference = reference.imageConnections.find(item => item.id === state.observations[0]);
+      document.getElementById('noticedReferenceLabel').textContent = primaryObservation?.label || '你看到的画面';
+      document.getElementById('noticedReferenceDetail').innerHTML = matchingReference
+        ? `<p>${matchingReference.text}</p>`
+        : '<p>这是你的观察入口，传统参考不替它规定唯一解释。</p>';
+      document.getElementById('noticedThought').textContent = `你刚才想到：“${thoughtText()}”`;
+
+      const otherReferences = reference.imageConnections.filter(item => item !== matchingReference);
+      document.getElementById('referenceTabs').innerHTML = otherReferences.map(item => `<button class="${item.id === 'number' ? 'selected' : ''}" type="button" data-reference-id="${item.id}">${item.label}</button>`).join('');
+      const detail = document.getElementById('referenceDetail');
+      const defaultReference = otherReferences.find(item => item.id === 'number') || otherReferences[0];
+      detail.hidden = !defaultReference;
+      detail.innerHTML = defaultReference ? referenceDetailMarkup(defaultReference) : '';
+      document.getElementById('reversalCards').innerHTML = `
+        <article><strong>${content.reversalExcess.title}</strong><small>${content.reversalExcess.term}</small><p>${content.reversalExcess.text}</p></article>
+        <article><strong>${content.reversalDeficiency.title}</strong><small>${content.reversalDeficiency.term}</small><p>${content.reversalDeficiency.text}</p></article>`;
+      document.getElementById('reversedNote').textContent = content.reversalNote;
+      document.getElementById('traditionalFraming').textContent = reference.framing;
+      document.getElementById('interpretationPrompt').textContent = content.interpretationPrompt;
+      document.getElementById('interpretationHint').textContent = content.interpretationHint;
+      document.getElementById('interpretationChoices').innerHTML = content.interpretationOptions.map(option => `
+        <button class="interpretation-choice" type="button" data-value="${option}">${option}</button>
+      `).join('');
+      document.getElementById('ownMeaning').placeholder = content.finalPlaceholder;
+      showReferencePage('core');
+    }
+
+    function showReferencePage(pageName) {
+      document.querySelectorAll('.traditional-page').forEach(page => page.hidden = page.dataset.referencePage !== pageName);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    document.getElementById('traditionalPanel').addEventListener('click', event => {
+      const next = event.target.closest('.reference-next');
+      if (next) showReferencePage(next.dataset.nextPage);
+    });
+
+    function referenceDetailMarkup(item) {
+      return `<p>${item.text}</p>`;
+    }
+
+    document.getElementById('referenceTabs').addEventListener('click', event => {
+      const button = event.target.closest('button[data-reference-id]');
+      if (!button) return;
+      document.querySelectorAll('#referenceTabs button').forEach(item => item.classList.toggle('selected', item === button));
+      const item = content.traditionalReference.imageConnections.find(reference => reference.id === button.dataset.referenceId);
+      const detail = document.getElementById('referenceDetail');
+      detail.innerHTML = referenceDetailMarkup(item);
+      detail.hidden = false;
+    });
+
+    document.getElementById('revealTraditional').addEventListener('click', () => {
+      renderTraditionalReference();
+      stepLabel.textContent = `${level.label} · 传统参考`;
+      showPanel(document.getElementById('traditionalPanel'));
+    });
+
+    document.getElementById('interpretationChoices').addEventListener('click', event => {
+      const choice = event.target.closest('.interpretation-choice');
+      if (!choice) return;
+      const value = choice.dataset.value;
+      const selected = state.interpretations.includes(value);
+      if (!selected && state.interpretations.length >= 2) return;
+      state.interpretations = selected
+        ? state.interpretations.filter(item => item !== value)
+        : [...state.interpretations, value];
+      choice.classList.toggle('selected', !selected);
+      choice.setAttribute('aria-pressed', String(!selected));
+      document.getElementById('completeExperience').disabled = state.interpretations.length === 0;
+    });
+
+    const ownMeaning = document.getElementById('ownMeaning');
+    document.getElementById('showOwnMeaning').addEventListener('click', () => {
+      const willShow = ownMeaning.hidden;
+      ownMeaning.hidden = !willShow;
+      document.getElementById('showOwnMeaning').textContent = willShow ? '－ 收起文字输入' : '＋ 写下我自己的理解';
+      if (willShow) ownMeaning.focus({ preventScroll: true });
+    });
+    ownMeaning.addEventListener('input', () => {
+      state.finalInterpretation = ownMeaning.value.trim();
+    });
+    document.getElementById('completeExperience').addEventListener('click', () => {
+      const result = {
+        completed: true,
+        completedAt: new Date().toISOString(),
+        result: { ...state }
+      };
+      localStorage.setItem(RESULT_KEY, JSON.stringify(result));
+      sessionStorage.removeItem(DRAW_KEY);
+      document.getElementById('completionTitle').textContent = content.completion.title;
+      document.getElementById('completionText').textContent = content.completion.text;
+      stepLabel.textContent = `${level.label} · 完成`;
+      showPanel(document.getElementById('completionPanel'));
+    });
+
+    document.title = `${level.label} · ${level.name} | Magic_U`;
+    document.getElementById('lessonTitle').textContent = `${level.label} · ${level.name}`;
+    document.getElementById('completionLink').textContent = `完成${level.label}`;
+    stepLabel.textContent = `${level.label} · 看见`;
+  </script>
+</body>
+</html>
