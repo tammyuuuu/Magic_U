@@ -1,7 +1,7 @@
 {
   "name": "Magic_U · 塔罗学习与解牌",
   "short_name": "Magic_U",
-  "start_url": "./reading_ios.html",
+  "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
