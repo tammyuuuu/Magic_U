@@ -1,0 +1,40 @@
+/* Keep reading screens and the phone's bottom safe area on one background. */
+html {
+  height: 100%;
+  min-height: 0;
+  background: #120c19;
+}
+body,
+body.daily-body {
+  height: 100vh;
+  height: 100dvh;
+  min-height: 0;
+  overflow: hidden;
+  background: radial-gradient(circle at 16% 5%, rgba(112,79,135,.17), transparent 35%),
+    radial-gradient(circle at 89% 76%, rgba(69,91,106,.1), transparent 39%),
+    linear-gradient(165deg, #17101f 0%, #0c0911 60%, #120c19 100%);
+}
+.reading-shell,
+.daily-shell,
+.spread-shell {
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  padding-bottom: max(18px, env(safe-area-inset-bottom));
+}
+.reading-top,
+.daily-top,
+.spread-shell > header {
+  flex-shrink: 0;
+}
+.reading-stage,
+.daily-stage,
+.spread-stage {
+  flex: 1;
+  height: auto;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}

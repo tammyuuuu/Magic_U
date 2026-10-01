@@ -7,6 +7,8 @@
 .fan-card.is-center{filter:brightness(1.08);border-color:rgba(218,190,231,.75);box-shadow:0 0 20px rgba(181,137,202,.18),0 4px 13px rgba(0,0,0,.36)}
 .fan-card.preselected{filter:brightness(1.18);border-color:rgba(229,202,240,.9);box-shadow:0 0 28px rgba(193,145,215,.38),0 8px 20px rgba(0,0,0,.42)}
 .fan-card:focus-visible{outline:1px solid #d5bce0;outline-offset:2px}
+.fan-number{position:absolute;top:5px;min-width:18px;padding:3px 2px;border-radius:5px;background:rgba(15,9,22,.86);color:#eee3f3;font:11px/1 "Segoe UI",sans-serif;text-align:center;pointer-events:none}
+.fan-card.preselected .fan-number{background:#d5bce0;color:#211529}
 .fan-hint{position:relative;z-index:6;margin:4px 0 0;text-align:center;color:#746879;font-size:11px;letter-spacing:.08em}
 .flying-card{transform-origin:center!important;transition:left .44s cubic-bezier(.22,.8,.28,1),top .44s cubic-bezier(.22,.8,.28,1),width .44s,height .44s,transform .44s!important}
 @media(max-width:380px){.draw-stage{padding-top:8px}.fan-wrap{height:238px;margin-top:-26px}.fan-card{bottom:-42px;width:80px}.fan-hint{margin-top:-2px}}
