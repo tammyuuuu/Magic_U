@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="250" height="429" viewBox="0 0 250 429">
+  <rect width="250" height="429" rx="12" fill="#1b1325"/>
+  <rect x="12" y="12" width="226" height="405" rx="8" fill="none" stroke="#65516f"/>
+  <path d="M125 160l25 40-25 40-25-40z" fill="none" stroke="#b59bc1"/>
+  <g fill="#c9b7d3" font-family="sans-serif" text-anchor="middle">
+    <text x="125" y="282" font-size="18">牌面尚未缓存</text>
+    <text x="125" y="310" font-size="13">联网后即可加载</text>
+  </g>
+</svg>
